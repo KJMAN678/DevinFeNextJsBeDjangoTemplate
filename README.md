@@ -32,26 +32,22 @@ $ docker compose up -d
 #### 5.SetUp Lint
 ```sh
 $ docker compose run --rm backend uv run ruff check .
+$ docker compose run --rm frontend npx next lint
 ```
 
 #### 6.SetUp Tests
 - no tests ran in 0.00s だと Devin の Verify が通らないっぽい
 ```sh
-$ uvx pytest
+$ docker compose run --rm backend uv run pytest
 ```
 
 ### 7.Setup Local App
 
 ```sh
 $ Run uv run manage.py migrate && uv run manage.py createsuperuser --noinput && uv run python manage.py runserver
-$ http://127.0.0.1:8000/ がローカルサーバーのURL
-
-$ uv run manage.py makemigrations
-$ uv run manage.py migrate
-$ uv run manage.py createsuperuser --noinput
-$ uv run python manage.py runserver
+$ http://localhost:3000/ がフロントエンドのURL
+$ http://localhost:8000/ がバックエンドのURL
 ```
-http://127.0.0.1:8000/
 
 #### 8.Additional Notes
 - 必ず日本語で回答してください
