@@ -39,12 +39,15 @@ $ docker compose run --rm frontend npx next lint
 - no tests ran in 0.00s だと Devin の Verify が通らないっぽい
 ```sh
 $ docker compose run --rm backend uv run pytest
+# Jest
+$ docker compose run --rm frontend npm run test
+# Playwright
+$ docker compose run --rm frontend npm run build && npm start & npx playwright test
 ```
 
 ### 7.Setup Local App
 
 ```sh
-$ Run uv run manage.py migrate && uv run manage.py createsuperuser --noinput && uv run python manage.py runserver
 $ http://localhost:3000/ がフロントエンドのURL
 $ http://localhost:8000/ がバックエンドのURL
 ```
@@ -64,4 +67,12 @@ $ http://localhost:8000/ がバックエンドのURL
 --- .github/
            |- workflows/
                         |-- pr_agent.yml
+```
+### Django
+- app 追加
+```sh
+$ mkdir -p backend/app/api
+$ docker compose run --rm backend uv run django-admin startapp api app/api
+$ docker compose run --rm backend uv run python app/manage.py makemigrations
+$ docker compose run --rm backend uv run python app/manage.py migrate
 ```

@@ -18,11 +18,11 @@ Including another URLconf
 from django.urls import path
 from debug_toolbar.toolbar import debug_toolbar_urls
 from django.contrib import admin
-from .apis import api
+from django.urls import include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", api.urls),
+    path("api/", include("api.urls")),
 ]
 
 urlpatterns += debug_toolbar_urls()
