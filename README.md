@@ -26,26 +26,45 @@ $ brew install direnv
 ```
 #### 4.Maintain Dependencies
 ```sh
-$ docker compose up -d
+# ローカルM1Mac用
+$ docker compose -f docker-compose.mac.yaml up --build
+# Devin用
+$ docker compose -f docker-compose.ubuntu.yaml up --build
 ```
 
 #### 5.SetUp Lint
 ```sh
-$ docker compose run --rm backend uv run ruff check .
-$ docker compose run --rm frontend npx next lint
+# ローカルM1Mac用
+$ docker compose -f docker-compose.mac.yaml run --rm backend uv run ruff check .
+$ docker compose -f docker-compose.mac.yaml run --rm frontend npx next lint
+
+# Devin用
+$ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run ruff check .
+$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx next lint
 ```
 
 #### 6.SetUp Tests
 - no tests ran in 0.00s だと Devin の Verify が通らないっぽい
 ```sh
-$ docker compose run --rm backend uv run pytest
-# Jest
-$ docker compose run --rm frontend npm run test
+# ローカルM1Mac用
+$ docker compose -f docker-compose.mac.yaml run --rm backend uv run pytest
+$ docker compose -f docker-compose.mac.yaml run --rm frontend npm run test
 
+# Devin用
+$ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run pytest
+$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npm run test
+
+# ローカルM1Mac用
 # 一度実行 ブラウザのインストール
-$ docker compose run --rm frontend npx playwright install chromium
+$ docker compose -f docker-compose.mac.yaml run --rm frontend npx playwright install chromium
 # Playwright
-$ docker compose run --rm frontend npx playwright test --project chromium
+$ docker compose -f docker-compose.mac.yaml run --rm frontend npx playwright test --project chromium
+
+# Devin用
+# 一度実行 ブラウザのインストール
+$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx playwright install chromium
+# Playwright
+$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx playwright test --project chromium
 ```
 
 ### 7.Setup Local App
@@ -74,8 +93,15 @@ $ http://localhost:8000/ がバックエンドのURL
 ### Django
 - app 追加
 ```sh
+# ローカルM1Mac用
 $ mkdir -p backend/app/api
-$ docker compose run --rm backend uv run django-admin startapp api app/api
-$ docker compose run --rm backend uv run python app/manage.py makemigrations
-$ docker compose run --rm backend uv run python app/manage.py migrate
+$ docker compose -f docker-compose.mac.yaml run --rm backend uv run django-admin startapp api app/api
+$ docker compose -f docker-compose.mac.yaml run --rm backend uv run python app/manage.py makemigrations
+$ docker compose -f docker-compose.mac.yaml run --rm backend uv run python app/manage.py migrate
+
+# Devin用
+$ mkdir -p backend/app/api
+$ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run django-admin startapp api app/api
+$ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run python app/manage.py makemigrations
+$ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run python app/manage.py migrate
 ```
