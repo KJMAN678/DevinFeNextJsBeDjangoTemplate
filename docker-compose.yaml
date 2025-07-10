@@ -5,6 +5,7 @@ services:
       context: ./frontend
     volumes:
       - ./frontend:/app/frontend
+      - playwright_browsers:/root/.cache/ms-playwright
     ports:
       - "3000:3000"
     command: npm run build-and-dev
@@ -40,3 +41,5 @@ services:
       timeout: 5s
       retries: 5
 
+volumes:
+  playwright_browsers:

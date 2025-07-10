@@ -41,8 +41,11 @@ $ docker compose run --rm frontend npx next lint
 $ docker compose run --rm backend uv run pytest
 # Jest
 $ docker compose run --rm frontend npm run test
+
+# 一度実行 ブラウザのインストール
+$ docker compose run --rm frontend npx playwright install chromium
 # Playwright
-$ docker compose run --rm frontend npm run build && npm start & npx playwright test
+$ docker compose run --rm frontend npx playwright test --project chromium
 ```
 
 ### 7.Setup Local App
