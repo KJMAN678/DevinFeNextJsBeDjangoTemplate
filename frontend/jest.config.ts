@@ -6,6 +6,10 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/tests/.*\\.spec\\.ts$" // Playwright用specファイルをJestから除外
+  ],
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",

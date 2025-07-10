@@ -189,3 +189,5 @@ service-account-key.json
 frontend/shared-images/*.jpg
 
 .envrc
+test-results/
+package-lock.json
