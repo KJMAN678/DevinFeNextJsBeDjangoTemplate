@@ -63,17 +63,13 @@ $ docker compose -f docker-compose.mac.yaml run --rm frontend npm run test
 $ docker compose -f docker-compose.ubuntu.yaml run --rm backend uv run pytest
 $ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npm run test
 
-# ローカルM1Mac用
-# 一度実行 ブラウザのインストール
-$ docker compose -f docker-compose.mac.yaml run --rm frontend npx playwright install chromium
 # Playwright
-$ docker compose -f docker-compose.mac.yaml run --rm frontend npx playwright test --project chromium
+# ローカルM1Mac用
+$ docker compose -f docker-compose.mac.yaml run --rm frontend npx playwright test --project firefox
 
 # Devin用
-# 一度実行 ブラウザのインストール
-$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx playwright install chromium
 # Playwright
-$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx playwright test --project chromium
+$ docker compose -f docker-compose.ubuntu.yaml run --rm frontend npx playwright test --project firefox
 ```
 
 ### 7.Setup Local App

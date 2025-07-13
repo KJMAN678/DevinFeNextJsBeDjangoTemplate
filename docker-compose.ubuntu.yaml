@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile.ubuntu
     volumes:
       - ./frontend:/app/frontend
-      - playwright_browsers:/root/.cache/ms-playwright
+      - /app/frontend/node_modules
     ports:
       - "3000:3000"
     environment:
