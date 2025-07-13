@@ -12,9 +12,14 @@ $ touch .envrc
 
 # .envrc に下記を入力. xxx は適宜更新
 
-export DJANGO_SUPERUSER_USERNAME=xxx
-export DJANGO_SUPERUSER_EMAIL=xxx@xxx.com
-export DJANGO_SUPERUSER_PASSWORD=xxx
+export NEXT_PUBLIC_API_URL=http://localhost:8000
+export DJANGO_SUPERUSER_USERNAME=hoge
+export DJANGO_SUPERUSER_EMAIL=hoge@test.com
+export DJANGO_SUPERUSER_PASSWORD=hogehoge
+export DJANGO_SECRET_KEY=hogehoge
+export POSTGRES_DB=hoge
+export POSTGRES_USER=hoge
+export POSTGRES_PASSWORD=hogehoge
 
 # 環境変数を読み込む
 $ direnv allow
@@ -30,6 +35,10 @@ $ brew install direnv
 $ docker compose -f docker-compose.mac.yaml up -d
 # Devin用
 $ docker compose -f docker-compose.ubuntu.yaml up -d
+
+# コンテナ作り直し
+$ ./remake-container.sh mac
+$ ./remake-container.sh ubuntu
 ```
 
 #### 5.SetUp Lint
